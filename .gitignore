@@ -1,0 +1,94 @@
+# -----------------
+# Eclipse
+# -----------------
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+**/bin/**
+
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+local.properties
+.classpath
+.settings
+.loadpath
+
+# -----------------
+# No idea...
+/src/main.resources.rebal.xml
+.externalToolBuilders/
+
+# -----------------
+# Eclipse launch config
+.launch
+
+# -----------------
+# CDT specific
+.cproject
+
+# -----------------
+# PDT specific
+.buildpath
+
+# -----------------
+# Log Files
+*.log
+*.log.*
+
+# -----------------
+# IntelliJ
+# -----------------
+.idea_modules/
+.settings/
+.gradle/
+logs/
+gen/
+build/
+target/
+bin/
+classes
+.idea/
+.metadata/
+.svn/
+*.iml
+*.apk
+
+# -----------------
+# Java
+# -----------------
+*.class
+
+# -----------------
+# Package Files
+# -----------------
+*.jar
+*.war
+*.ear
+*.db
+
+# -----------------
+# Object and Archive files
+*.[oa]
+
+# -----------------
+# Windows
+# -----------------
+Thumbs.db
+Desktop.ini
+
+# -----------------
+# OSX
+# -----------------
+.DS_Store
+.svn
+
+._*
+.Spotlight-V100
+.Trashes
+/target/
