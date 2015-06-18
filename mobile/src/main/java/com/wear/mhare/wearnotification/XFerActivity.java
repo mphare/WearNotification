@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class XFerActivity extends ActionBarActivity
 {
@@ -15,6 +16,11 @@ public class XFerActivity extends ActionBarActivity
     setContentView(R.layout.activity_xfer);
   }
 
+  public void sendData(View view)
+  {
+
+  }
+
   @Override
   public boolean onCreateOptionsMenu(Menu menu)
   {
@@ -22,7 +28,6 @@ public class XFerActivity extends ActionBarActivity
     getMenuInflater().inflate(R.menu.menu_xfer, menu);
     return true;
   }
-
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item)
