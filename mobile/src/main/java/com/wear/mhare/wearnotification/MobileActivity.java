@@ -1,6 +1,7 @@
 package com.wear.mhare.wearnotification;
 
 import android.app.Notification;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.ActionBarActivity;
@@ -38,6 +39,13 @@ public class MobileActivity extends ActionBarActivity
       }
     });
 
+  }
+
+  public void transferDataToWear(View view)
+  {
+    Intent intent = new Intent(this, XFerActivity.class);
+
+    startActivity(intent);
   }
 
   @Override

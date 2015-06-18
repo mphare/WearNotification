@@ -24,13 +24,24 @@
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"/>
 
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/editText"
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Transfer Data to Wear"
+        android:id="@+id/buttonXfer"
         android:layout_below="@+id/buttonNotify"
         android:layout_alignParentStart="true"
-        android:background="#fffff1cd"/>
+        android:onClick="transferDataToWear"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_alignParentStart="false"
+        android:background="#fffff1cd"
+        android:layout_below="@+id/buttonXfer"
+        android:textColor="#d9685033"
+        android:hint="Type Here"/>
 
 
 </RelativeLayout>
