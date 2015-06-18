@@ -30,7 +30,17 @@
         android:id="@+id/editText"
         android:layout_below="@+id/buttonNotify"
         android:layout_alignParentStart="true"
-        android:background="#fffff1cd"/>
+        android:background="#fffff1cd"
+        android:layout_above="@+id/button"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Transfer Data"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:onClick="transferData"/>
 
 
 </RelativeLayout>

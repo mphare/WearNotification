@@ -1,6 +1,7 @@
 package com.wear.mhare.wearnotification;
 
 import android.app.Notification;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.ActionBarActivity;
@@ -10,8 +11,68 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.wearable.MessageApi;
+import com.google.android.gms.wearable.Node;
+import com.google.android.gms.wearable.NodeApi;
+import com.google.android.gms.wearable.Wearable;
+
 public class MobileActivity extends ActionBarActivity
 {
+
+  GoogleApiClient mApiClient;
+
+  private void initGoogleApiClient()
+  {
+    mApiClient = new GoogleApiClient.Builder(this)
+        .addApi(Wearable.API)
+        .build();
+
+    mApiClient.connect();
+  }
+
+  @Override
+  public void onConnected(Bundle bundle)
+  {
+    public static final String START_ACTIVITY = "/start_activity";
+
+    sendMessage(START_ACTIVITY, "");
+  }
+
+  private void sendMessage(final String path, final String text)
+  {
+    new Thread(new Runnable()
+    {
+      @Override public void run()
+      {
+        NodeApi.GetConnectedNodesResult nodes = Wearable.NodeApi.getConnectedNodes(mApiClient).wait();
+
+        for (Node node : nodes.getNodes())
+        {
+          MessageApi.sendMessageResult result = Wearable.MessageApi.sendMessage(mApiClient, node.getId(), path, text
+              .getBytes()).wait();
+        }
+
+        runOnUiThread(new Runnable()
+        {
+          @Override public void run()
+          {
+            mEditText.setText("");
+          }
+        });
+      }
+    }).start();
+  }
+
+  /**
+   *
+   */
+  @Override
+  protected void onDestroy()
+  {
+    super.onDestroy();
+    mApiClient.disconnect();
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -38,6 +99,12 @@ public class MobileActivity extends ActionBarActivity
       }
     });
 
+  }
+
+  public void transferData(View view)
+  {
+    Intent intent = new Intent(this, XFerActivity.class);
+    startActivity(intent);
   }
 
   @Override
