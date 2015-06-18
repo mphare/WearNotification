@@ -9,33 +9,42 @@
                 tools:context="com.wear.mhare.wearnotification.XFerActivity"
                 android:background="#88266e29">
 
-    <TextView
-        android:text="Transfer Data"
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/list_view"
+        android:transcriptMode="normal"
+        android:stackFromBottom="true"
+        android:layout_above="@+id/input_container"
+        >
+
+    </ListView>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:id="@+id/textView2"
-        android:textColor="#bf192517"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/button2"
-        android:background="#da8d7352"
-        android:hint="Type Here"/>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Send Data"
-        android:id="@+id/button2"
+        android:id="@+id/input_container"
+        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="sendData"/>
+        >
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:id="@+id/input"
+            android:background="#da8d7352"
+            android:inputType="textNoSuggestions"
+            android:hint="Type Here"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Send"
+            android:id="@+id/btn_send"
+            android:onClick="sendData"/>
+    </LinearLayout>
 
 </RelativeLayout>
