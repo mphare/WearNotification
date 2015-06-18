@@ -20,59 +20,6 @@ import com.google.android.gms.wearable.Wearable;
 public class MobileActivity extends ActionBarActivity
 {
 
-  GoogleApiClient mApiClient;
-
-  private void initGoogleApiClient()
-  {
-    mApiClient = new GoogleApiClient.Builder(this)
-        .addApi(Wearable.API)
-        .build();
-
-    mApiClient.connect();
-  }
-
-  @Override
-  public void onConnected(Bundle bundle)
-  {
-    public static final String START_ACTIVITY = "/start_activity";
-
-    sendMessage(START_ACTIVITY, "");
-  }
-
-  private void sendMessage(final String path, final String text)
-  {
-    new Thread(new Runnable()
-    {
-      @Override public void run()
-      {
-        NodeApi.GetConnectedNodesResult nodes = Wearable.NodeApi.getConnectedNodes(mApiClient).wait();
-
-        for (Node node : nodes.getNodes())
-        {
-          MessageApi.sendMessageResult result = Wearable.MessageApi.sendMessage(mApiClient, node.getId(), path, text
-              .getBytes()).wait();
-        }
-
-        runOnUiThread(new Runnable()
-        {
-          @Override public void run()
-          {
-            mEditText.setText("");
-          }
-        });
-      }
-    }).start();
-  }
-
-  /**
-   *
-   */
-  @Override
-  protected void onDestroy()
-  {
-    super.onDestroy();
-    mApiClient.disconnect();
-  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState)

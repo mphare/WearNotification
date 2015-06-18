@@ -22,7 +22,7 @@
         </activity>
         <activity
             android:name=".XFerActivity"
-            android:label="@string/title_activity_xfer">
+            android:label="@string/title_activity_xfer" >
         </activity>
     </application>
 
