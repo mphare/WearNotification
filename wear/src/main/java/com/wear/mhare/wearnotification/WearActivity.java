@@ -24,44 +24,6 @@ public class WearActivity extends Activity implements MessageApi.MessageListener
   private ListView mListView;
 
   /**
-   * @param bundle
-   */
-  @Override
-  public void onConnected(Bundle bundle)
-  {
-    Wearable.MessageApi.addListener(mApiClient, this);
-  }
-
-  /**
-   * @param i
-   */
-  @Override public void onConnectionSuspended(int i)
-  {
-
-  }
-
-  /**
-   * @param messageEvent
-   */
-  @Override
-  public void onMessageReceived(final MessageEvent messageEvent)
-  {
-    runOnUiThread(new Runnable()
-    {
-      @Override
-      public void run()
-      {
-        if (messageEvent.getPath().equalsIgnoreCase(WEAR_MESSAGE_PATH))
-        {
-          mAdapter.add(new String(messageEvent.getData()));
-          mAdapter.notifyDataSetChanged();
-
-        }
-      }
-    });
-  }
-
-  /**
    * @param savedInstanceState
    */
   @Override
@@ -111,6 +73,36 @@ public class WearActivity extends Activity implements MessageApi.MessageListener
   }
 
   /**
+   * @param messageEvent
+   */
+  @Override
+  public void onMessageReceived(final MessageEvent messageEvent)
+  {
+    runOnUiThread(new Runnable()
+    {
+      @Override
+      public void run()
+      {
+        if (messageEvent.getPath().equalsIgnoreCase(WEAR_MESSAGE_PATH))
+        {
+          mAdapter.add(new String(messageEvent.getData()));
+          mAdapter.notifyDataSetChanged();
+
+        }
+      }
+    });
+  }
+
+  /**
+   * @param bundle
+   */
+  @Override
+  public void onConnected(Bundle bundle)
+  {
+    Wearable.MessageApi.addListener(mApiClient, this);
+  }
+
+  /**
    *
    */
   @Override
@@ -138,6 +130,14 @@ public class WearActivity extends Activity implements MessageApi.MessageListener
       mApiClient.unregisterConnectionCallbacks(this);
     }
     super.onDestroy();
+  }
+
+  /**
+   * @param i
+   */
+  @Override public void onConnectionSuspended(int i)
+  {
+
   }
 
 }
