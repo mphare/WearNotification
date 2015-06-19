@@ -66,7 +66,7 @@ public class XFerActivity extends Activity implements GoogleApiClient.Connection
 
   private void init()
   {
-    mSendButton = (Button) findViewById(R.id.sendButton);
+    mSendButton = (Button) findViewById(R.id.btn_send);
     mEditText = (EditText) findViewById(R.id.input);
     mListView = (ListView) findViewById(R.id.list_view);
 
