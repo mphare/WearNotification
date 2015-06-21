@@ -17,6 +17,8 @@ import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
 
+import java.util.Date;
+
 public class XFerActivity extends Activity implements GoogleApiClient.ConnectionCallbacks
 {
   GoogleApiClient mApiClient;
@@ -83,7 +85,11 @@ public class XFerActivity extends Activity implements GoogleApiClient.Connection
         {
           mAdapter.add(text);
           mAdapter.notifyDataSetChanged();
-          sendMessage(WEAR_MESSAGE_PATH, text);
+//          sendMessage(WEAR_MESSAGE_PATH, text);
+
+          Date myDate = new Date();
+          ItemDataModel itemEntry = new ItemDataModel("My Name", "My Type", myDate);
+          sendMessageItem(WEAR_MESSAGE_PATH, itemEntry);
         }
       }
     });
@@ -119,6 +125,11 @@ public class XFerActivity extends Activity implements GoogleApiClient.Connection
     }).start();
   }
 
+  private void sendMessageItem(final String path, final ItemDataModel itemDataModel)
+  {
+
+  }
+
   /**
    * @param bundle
    */
@@ -126,7 +137,7 @@ public class XFerActivity extends Activity implements GoogleApiClient.Connection
   public void onConnected(Bundle bundle)
   {
 
-    sendMessage(START_ACTIVITY, "");
+    sendMessage(START_ACTIVITY, "Hello Message");
   }
 
   @Override
